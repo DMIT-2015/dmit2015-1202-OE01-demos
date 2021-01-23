@@ -23,7 +23,8 @@
   <dependencies>
 
     <!-- Arquillian allows you to test enterprise code such as EJBs and Transactional(JTA)
-               JPA from JUnit/TestNG -->
+           JPA from JUnit/TestNG -->
+
     <dependency>
       <groupId>org.junit.platform</groupId>
       <artifactId>junit-platform-runner</artifactId>
@@ -55,6 +56,12 @@
       <version>3.0.1.Final</version>
       <scope>test</scope>
     </dependency>
+    <dependency>
+      <groupId>org.jboss.arquillian.extension</groupId>
+      <artifactId>arquillian-transaction-jta</artifactId>
+      <version>1.0.5</version>
+    </dependency>
+
 
     <dependency>
       <groupId>org.slf4j</groupId>
@@ -68,7 +75,6 @@
       <version>1.18.16</version>
       <scope>provided</scope>
     </dependency>
-
 
 
     <dependency>
