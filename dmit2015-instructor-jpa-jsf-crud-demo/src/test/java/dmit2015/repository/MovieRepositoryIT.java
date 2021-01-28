@@ -90,6 +90,7 @@ class MovieRepositoryIT {
 
     @Test
     void shouldFindAll() {
+        assertNotNull(_movieRepository);
         List<Movie> queryResultList = _movieRepository.findAll();
         assertEquals(4, queryResultList.size());
 
