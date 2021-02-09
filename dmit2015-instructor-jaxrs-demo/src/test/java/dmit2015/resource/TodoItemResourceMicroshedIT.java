@@ -4,6 +4,9 @@ import dmit2015.entity.TodoItem;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.*;
+import org.microshed.testing.jupiter.MicroShedTest;
+import org.microshed.testing.testcontainers.ApplicationContainer;
+import org.testcontainers.junit.jupiter.Container;
 
 import javax.json.bind.Jsonb;
 import javax.json.bind.JsonbBuilder;
@@ -21,7 +24,14 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-public class TodoItemResourceRestAssuredIT {
+@MicroShedTest
+public class TodoItemResourceMicroshedIT {
+
+    @Container
+    public static ApplicationContainer app = new ApplicationContainer()
+            .withAppContextRoot("/dmit2015-instructor-jaxrs-demo")
+            .withReadinessPath("/dmit2015-instructor-jaxrs-demo/webapi/TodoItems");
+
 
     String testDataResourceLocation;
 
@@ -31,7 +41,7 @@ public class TodoItemResourceRestAssuredIT {
         Response response = given()
                 .accept(ContentType.JSON)
                 .when()
-                .get("/dmit2015-instructor-jaxrs-demo/webapi/TodoItems")
+                .get("/webapi/TodoItems")
                 .then()
                 .statusCode(200)
                 .contentType(ContentType.JSON)
@@ -68,7 +78,7 @@ public class TodoItemResourceRestAssuredIT {
                 .contentType(ContentType.JSON)
                 .body(jsonBody)
                 .when()
-                .post("/dmit2015-instructor-jaxrs-demo/webapi/TodoItems")
+                .post("/webapi/TodoItems")
                 .then()
                 .statusCode(201)
                 .extract()
