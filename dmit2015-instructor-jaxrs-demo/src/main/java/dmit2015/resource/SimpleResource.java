@@ -14,32 +14,33 @@ import java.awt.*;
  *  /webapi/simple/hello	GET			                                                    Return "Hello, World" in plain text format
  *  /webapi/simple/hello    GET                                                             Return "Hello, <strong>World</strong>" in HTML format
  *
- curl -i -X GET http://localhost:8080/dmit2015-instructor-jaxrs-demo/webapi/simple/hello \
-   -H 'Content-Type:text/plain'
+ curl -i -X GET http://localhost:8080/dmit2015-instructor-jaxrs-demo/webapi/simple -H 'Accept: text/plain'
 
- curl -i -X GET http://localhost:8080/dmit2015-instructor-jaxrs-demo/webapi/simple/hello \
- -H 'Content-Type:text/html'
+ curl -i -X GET http://localhost:8080/dmit2015-instructor-jaxrs-demo/webapi/simple/hello -H 'Accept: text/html'
 
+ curl -i -X GET http://localhost:8080/dmit2015-instructor-jaxrs-demo/webapi/simple/hello -H 'Accept: application/json'
  */
 
 @ApplicationScoped
 @Path("/simple")
-//@Consumes(MediaType.APPLICATION_JSON)
-//@Produces(MediaType.APPLICATION_JSON)
 public class SimpleResource {
 
-    @Path("/hello")
     @Produces(MediaType.TEXT_PLAIN)
     @GET
     public String helloText() {
         return "Hello, World";
     }
 
-    @Path("/hello")
     @Produces(MediaType.TEXT_HTML)
     @GET
     public String helloHtml() {
         return "Hello, <strong>World</strong>";
+    }
+
+    @Produces(MediaType.APPLICATION_JSON)
+    @GET
+    public String helloJson() {
+        return "{\"message\":\"Hello World!\"}";
     }
 
 }

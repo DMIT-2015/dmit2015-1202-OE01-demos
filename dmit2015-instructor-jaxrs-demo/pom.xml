@@ -115,13 +115,13 @@
     <dependency>
       <groupId>org.jboss.arquillian.junit5</groupId>
       <artifactId>arquillian-junit5-container</artifactId>
-      <version>1.7.0.Alpha6</version>
+      <version>1.7.0.Alpha7</version>
       <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.jboss.arquillian.protocol</groupId>
       <artifactId>arquillian-protocol-servlet</artifactId>
-      <version>1.7.0.Alpha6</version>
+      <version>1.7.0.Alpha7</version>
       <scope>test</scope>
     </dependency>
     <dependency>
@@ -172,7 +172,7 @@
       <version>4.3.3</version>
       <scope>test</scope>
     </dependency>
-
+    
   </dependencies>
 
   <build>
