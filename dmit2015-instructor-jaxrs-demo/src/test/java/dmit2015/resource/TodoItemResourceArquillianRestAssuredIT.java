@@ -6,6 +6,9 @@ import dmit2015.entity.TodoItem;
 import dmit2015.repository.TodoItemRepository;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
+import org.apache.maven.model.Model;
+import org.apache.maven.model.io.xpp3.MavenXpp3Reader;
+import org.codehaus.plexus.util.xml.pull.XmlPullParserException;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.container.test.api.RunAsClient;
 import org.jboss.arquillian.junit5.ArquillianExtension;
@@ -20,6 +23,9 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import javax.json.bind.Jsonb;
 import javax.json.bind.JsonbBuilder;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,6 +37,7 @@ import static org.junit.jupiter.api.Assertions.*;
  * https://github.com/rest-assured/rest-assured/wiki/Usage
  * http://www.mastertheboss.com/jboss-frameworks/resteasy/restassured-tutorial
  * http://json-b.net/docs/user-guide.html
+ *
  */
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
@@ -38,13 +45,16 @@ import static org.junit.jupiter.api.Assertions.*;
 public class TodoItemResourceArquillianRestAssuredIT {
 
     @Deployment
-    public static WebArchive createDeployment() {
+    public static WebArchive createDeployment() throws IOException, XmlPullParserException {
         PomEquippedResolveStage pomFile = Maven.resolver().loadPomFromFile("pom.xml");
-
-        return ShrinkWrap.create(WebArchive.class,"test.war")
+        MavenXpp3Reader reader = new MavenXpp3Reader();
+        Model model = reader.read(new FileReader("pom.xml"));
+        final String archiveName = model.getArtifactId() + ".war";
+        return ShrinkWrap.create(WebArchive.class,archiveName)
                 .addAsLibraries(pomFile.resolve("com.h2database:h2:1.4.200").withTransitivity().asFile())
                 .addClasses(ApplicationConfig.class, JAXRSConfiguration.class)
                 .addClasses(TodoItem.class, TodoItemRepository.class, TodoItemResource.class)
+                .addClasses(HelloWorldResource.class)
 //                .addPackage("dmit2015.config")
 //                .addPackage("dmit2015.entity")
 //                .addPackage("dmit2015.repository")
@@ -55,21 +65,10 @@ public class TodoItemResourceArquillianRestAssuredIT {
                 .addAsWebInfResource(EmptyAsset.INSTANCE,"beans.xml");
     }
 
-//    @Test 
-//    void shouldFail() {
-//        assertEquals(2, 3);
-//    }
-//    
-//    @Test 
-//    void shouldPass() {
-//        assertEquals(2, 2);
-//    }
-
     @Test
     @RunAsClient
     public void checkSiteIsUp() {
-        given().when().get("https://www.google.ca/").then().statusCode(200);
-        given().when().get("http://localhost:8080/").then().statusCode(200);
+        given().when().get("https://www.nait.ca/").then().statusCode(200);
         given().when().get("http://localhost:8080/dmit2015-instructor-jaxrs-demo/h2-console").then().statusCode(200);
     }
 
@@ -83,7 +82,7 @@ public class TodoItemResourceArquillianRestAssuredIT {
         		.urlEncodingEnabled(false)
                 .accept(ContentType.JSON)
                 .when()
-                .get("http://localhost:8080/dmit2015-instructor-jaxrs-demo/webapi/TodoItems")
+                .get("/dmit2015-instructor-jaxrs-demo/webapi/TodoItems")
                 .then()
                 .statusCode(200)
                 .contentType(ContentType.JSON)
