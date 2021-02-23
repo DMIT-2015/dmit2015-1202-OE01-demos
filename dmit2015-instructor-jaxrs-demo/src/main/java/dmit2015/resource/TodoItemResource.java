@@ -40,7 +40,7 @@ import java.util.Optional;
 
  curl -i -X GET http://localhost:8080/dmit2015-instructor-jaxrs-demo/webapi/TodoItems/4
 
- curl -i -X PUT http://localhost:8080/dmit2015-instructor-jaxrs-demoo/webapi/TodoItems/4 \
+ curl -i -X PUT http://localhost:8080/dmit2015-instructor-jaxrs-demo/webapi/TodoItems/4 \
     -d '{"id":4,"name":"Demo DMIT2015 Assignment 1","complete":true}' \
     -H 'Content-Type:application/json'
 
