@@ -29,13 +29,12 @@ import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @ExtendWith(ArquillianExtension.class)                  // Run with JUnit 5 instead of JUnit 4
 class MovieRepositoryIT {
 
-    Movie currentMovie;     // The current Movie that is being managed
-    Long currentMovieId;
+    Long testMovieId = 5L;
 
     @Inject
     private MovieRepository _movieRepository;
@@ -50,7 +49,7 @@ class MovieRepositoryIT {
                 // .addAsLibraries(pomFile.resolve("com.microsoft.sqlserver:mssql-jdbc:8.4.1.jre11").withTransitivity().asFile())
                 // .addAsLibraries(pomFile.resolve("com.oracle.database.jdbc:ojdbc10:19.9.0.0").withTransitivity().asFile())
                 .addAsLibraries(pomFile.resolve("org.hamcrest:hamcrest:2.2").withTransitivity().asFile())
-                .addAsLibraries(pomFile.resolve("org.hibernate:hibernate-core:5.3.20.Final").withTransitivity().asFile())
+                .addAsLibraries(pomFile.resolve("org.hibernate:hibernate-core:5.4.27.Final").withTransitivity().asFile())
                 .addAsLibraries(pomFile.resolve("org.hibernate.validator:hibernate-validator:6.2.0.Final").withTransitivity().asFile())
                 .addClass(ApplicationConfig.class)
                 .addClasses(Movie.class, MovieRepository.class)
@@ -62,15 +61,15 @@ class MovieRepositoryIT {
 
     @Test
     void shouldFailToPersist() {
-        Movie currentMovie = new Movie();
-//        _movieRepository.add(currentMovie);
+        Movie newMovie = new Movie();
+//        _movieRepository.add(newMovie);
         ConstraintViolationException cve = assertThrows(
                 ConstraintViolationException.class,
-                () -> _movieRepository.add(currentMovie)
+                () -> _movieRepository.add(newMovie)
         );
 
         Validator validator = Validation.buildDefaultValidatorFactory().getValidator();
-        Set<ConstraintViolation<Movie>> constraintViolations = validator.validate(currentMovie);
+        Set<ConstraintViolation<Movie>> constraintViolations = validator.validate(newMovie);
         assertEquals(4, constraintViolations.size());
         constraintViolations.forEach(item -> {
             System.out.println(item.getMessage());
@@ -78,20 +77,18 @@ class MovieRepositoryIT {
 
     }
 
-//    @Transactional(TransactionMode.ROLLBACK)
     @Order(2)
     @Test
     void shouldCreate() {
-        currentMovie = new Movie();
-        currentMovie.setGenre("Horror");
-        currentMovie.setPrice(BigDecimal.valueOf(19.99));
-        currentMovie.setRating("NC-17");
-        currentMovie.setTitle("The Return of the Java Master");
-        currentMovie.setReleaseDate(LocalDate.parse("2021-01-21"));
-        _movieRepository.add(currentMovie);
-        currentMovieId = currentMovie.getId();
+        Movie newMovie = new Movie();
+        newMovie.setGenre("Horror");
+        newMovie.setPrice(BigDecimal.valueOf(19.99));
+        newMovie.setRating("NC-17");
+        newMovie.setTitle("The Return of the Java Master");
+        newMovie.setReleaseDate(LocalDate.parse("2021-01-21"));
+        _movieRepository.add(newMovie);
 
-        Optional<Movie> optionalMovie = _movieRepository.findById(currentMovie.getId());
+        Optional<Movie> optionalMovie = _movieRepository.findById(testMovieId);
         assertTrue(optionalMovie.isPresent());
         Movie existingMovie = optionalMovie.get();
         assertNotNull(existingMovie);
@@ -106,10 +103,7 @@ class MovieRepositoryIT {
     @Order(3)
     @Test
     void shouldFindOne() {
-        //final Long movieId = 3L;  // for Ghostbusters 2
-        assertNotNull(currentMovieId);
-        final Long movieId = currentMovie.getId();
-        Optional<Movie> optionalMovie = _movieRepository.findById(movieId);
+        Optional<Movie> optionalMovie = _movieRepository.findById(testMovieId);
         assertTrue(optionalMovie.isPresent());
         Movie existingMovie = optionalMovie.get();
         assertNotNull(existingMovie);
@@ -143,13 +137,10 @@ class MovieRepositoryIT {
         assertEquals(LocalDate.parse("1959-04-15", formatter).toString(), lastMovie.getReleaseDate().toString());
     }
 
-//    @Transactional(TransactionMode.ROLLBACK)
     @Order(4)
     @Test
     void shouldUpdate() {
-//        final Long movieId = 3L;  // for Ghostbusters 2
-        final Long movieId = currentMovie.getId();
-        Optional<Movie> optionalMovie = _movieRepository.findById(movieId);
+        Optional<Movie> optionalMovie = _movieRepository.findById(testMovieId);
         assertTrue(optionalMovie.isPresent());
         Movie existingMovie = optionalMovie.get();
         assertNotNull(existingMovie);
@@ -158,7 +149,7 @@ class MovieRepositoryIT {
         existingMovie.setReleaseDate(LocalDate.parse("2016-07-15"));
         _movieRepository.update(existingMovie);
 
-        Optional<Movie> optionalUpdatedMovie = _movieRepository.findById(movieId);
+        Optional<Movie> optionalUpdatedMovie = _movieRepository.findById(testMovieId);
         assertTrue(optionalUpdatedMovie.isPresent());
         Movie updatedMovie = optionalUpdatedMovie.get();
         assertNotNull(updatedMovie);
@@ -168,17 +159,14 @@ class MovieRepositoryIT {
         assertEquals(existingMovie.getGenre(), updatedMovie.getGenre());
     }
 
-//    @Transactional(TransactionMode.ROLLBACK)
     @Test
     void shouldDelete() {
-//        final Long movieId = 3L;  // for Ghostbusters 2
-        final Long movieId = currentMovie.getId();
-        Optional<Movie> optionalMovie = _movieRepository.findById(movieId);
+        Optional<Movie> optionalMovie = _movieRepository.findById(testMovieId);
         assertTrue(optionalMovie.isPresent());
         Movie existingMovie = optionalMovie.get();
         assertNotNull(existingMovie);
         _movieRepository.remove(existingMovie.getId());
-        optionalMovie = _movieRepository.findById(movieId);
+        optionalMovie = _movieRepository.findById(testMovieId);
         assertTrue(optionalMovie.isEmpty());
     }
 
