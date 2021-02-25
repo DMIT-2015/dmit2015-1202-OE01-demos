@@ -28,11 +28,11 @@ import java.util.Set;
 import static org.junit.jupiter.api.Assertions.*;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-@TestInstance(TestInstance.Lifecycle.PER_CLASS)
-@ExtendWith(ArquillianExtension.class)                  // Run with JUnit 5 instead of JUnit 4
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)     // currently does not work with arquillian-junit5-containerr 1.7.0.Alpha8
+@ExtendWith(ArquillianExtension.class)              // Run with JUnit 5 instead of JUnit 4
 class MovieRepositoryIT {
 
-    Long testMovieId = 5L;
+    static Movie currentMovie; // add static to shared data between test methods until arquillian-junit5-container TestInstance.Lifecycle.PER_CLASS bug is fixed
 
     @Inject
     private MovieRepository _movieRepository;
@@ -78,15 +78,15 @@ class MovieRepositoryIT {
     @Order(2)
     @Test
     void shouldCreate() {
-        Movie newMovie = new Movie();
-        newMovie.setGenre("Horror");
-        newMovie.setPrice(BigDecimal.valueOf(19.99));
-        newMovie.setRating("NC-17");
-        newMovie.setTitle("The Return of the Java Master");
-        newMovie.setReleaseDate(LocalDate.parse("2021-01-21"));
-        _movieRepository.add(newMovie);
+        currentMovie = new Movie();
+        currentMovie.setGenre("Horror");
+        currentMovie.setPrice(BigDecimal.valueOf(19.99));
+        currentMovie.setRating("NC-17");
+        currentMovie.setTitle("The Return of the Java Master");
+        currentMovie.setReleaseDate(LocalDate.parse("2021-01-21"));
+        _movieRepository.add(currentMovie);
 
-        Optional<Movie> optionalMovie = _movieRepository.findById(testMovieId);
+        Optional<Movie> optionalMovie = _movieRepository.findById(currentMovie.getId());
         assertTrue(optionalMovie.isPresent());
         Movie existingMovie = optionalMovie.get();
         assertNotNull(existingMovie);
@@ -101,7 +101,7 @@ class MovieRepositoryIT {
     @Order(3)
     @Test
     void shouldFindOne() {
-        Optional<Movie> optionalMovie = _movieRepository.findById(testMovieId);
+        Optional<Movie> optionalMovie = _movieRepository.findById(currentMovie.getId());
         assertTrue(optionalMovie.isPresent());
         Movie existingMovie = optionalMovie.get();
         assertNotNull(existingMovie);
@@ -115,7 +115,6 @@ class MovieRepositoryIT {
     @Order(1)
     @Test
     void shouldFindAll() {
-        assertNotNull(_movieRepository);
         List<Movie> queryResultList = _movieRepository.findAll();
         assertEquals(4, queryResultList.size());
 
@@ -138,7 +137,7 @@ class MovieRepositoryIT {
     @Order(4)
     @Test
     void shouldUpdate() {
-        Optional<Movie> optionalMovie = _movieRepository.findById(testMovieId);
+        Optional<Movie> optionalMovie = _movieRepository.findById(currentMovie.getId());
         assertTrue(optionalMovie.isPresent());
         Movie existingMovie = optionalMovie.get();
         assertNotNull(existingMovie);
@@ -147,7 +146,7 @@ class MovieRepositoryIT {
         existingMovie.setReleaseDate(LocalDate.parse("2016-07-15"));
         _movieRepository.update(existingMovie);
 
-        Optional<Movie> optionalUpdatedMovie = _movieRepository.findById(testMovieId);
+        Optional<Movie> optionalUpdatedMovie = _movieRepository.findById(currentMovie.getId());
         assertTrue(optionalUpdatedMovie.isPresent());
         Movie updatedMovie = optionalUpdatedMovie.get();
         assertNotNull(updatedMovie);
@@ -159,12 +158,12 @@ class MovieRepositoryIT {
 
     @Test
     void shouldDelete() {
-        Optional<Movie> optionalMovie = _movieRepository.findById(testMovieId);
+        Optional<Movie> optionalMovie = _movieRepository.findById(currentMovie.getId());
         assertTrue(optionalMovie.isPresent());
         Movie existingMovie = optionalMovie.get();
         assertNotNull(existingMovie);
         _movieRepository.remove(existingMovie.getId());
-        optionalMovie = _movieRepository.findById(testMovieId);
+        optionalMovie = _movieRepository.findById(currentMovie.getId());
         assertTrue(optionalMovie.isEmpty());
     }
 
