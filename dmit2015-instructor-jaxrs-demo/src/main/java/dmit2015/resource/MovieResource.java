@@ -87,23 +87,16 @@ public class MovieResource {
     @PUT
     @Path("{id : \\d+}")
     public Response update(@PathParam("id") Long movieId, @Valid Movie updatedMovie) {
-        if (movieId == null || !movieId.equals(updatedMovie.getId())) {
+        if (movieId == null || updatedMovie.getId() == null || !movieId.equals(updatedMovie.getId())) {
             throw new BadRequestException();
         }
 
         Optional<Movie> optionalMovie = _movieRepository.findById(movieId);
-        if (optionalMovie.isPresent()) {
-            Movie existingMovie = optionalMovie.get();
-            existingMovie.setGenre(updatedMovie.getGenre());
-            existingMovie.setPrice(updatedMovie.getPrice());
-            existingMovie.setRating(updatedMovie.getRating());
-            existingMovie.setTitle(updatedMovie.getTitle());
-            existingMovie.setReleaseDate(updatedMovie.getReleaseDate());
-            _movieRepository.update(existingMovie);
-            return Response.noContent().build();
-        } else {
+        if (optionalMovie.isEmpty()) {
             throw new NotFoundException();
         }
+        _movieRepository.update(updatedMovie);
+        return Response.noContent().build();
     }
 
     @DELETE
