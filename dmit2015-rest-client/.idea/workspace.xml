@@ -5,6 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cc43dbe2-5fb7-4dda-b42a-cb46d942ee8f" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../dmit2015-instructor-jaxrs-demo/src/main/java/dmit2015/view/MovieCreateController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../dmit2015-instructor-jaxrs-demo/src/main/webapp/movies/create.xhtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -38,6 +40,12 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RunManager">
@@ -72,6 +80,8 @@
       <workItem from="1614442238268" duration="279000" />
       <workItem from="1614650846215" duration="71000" />
       <workItem from="1614650980649" duration="421000" />
+      <workItem from="1614721084687" duration="2918000" />
+      <workItem from="1614822978904" duration="1020000" />
     </task>
     <servers />
   </component>
