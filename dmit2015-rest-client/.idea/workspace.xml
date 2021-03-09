@@ -5,8 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cc43dbe2-5fb7-4dda-b42a-cb46d942ee8f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../dmit2015-instructor-jaxrs-demo/src/main/java/dmit2015/view/MovieCreateController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../dmit2015-instructor-jaxrs-demo/src/main/webapp/movies/create.xhtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -40,6 +38,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$USER_HOME$/demo/dmit2015-1202-oe01-assignment02-joelWarrington" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -82,6 +81,7 @@
       <workItem from="1614650980649" duration="421000" />
       <workItem from="1614721084687" duration="2918000" />
       <workItem from="1614822978904" duration="1020000" />
+      <workItem from="1614895746911" duration="19000" />
     </task>
     <servers />
   </component>
