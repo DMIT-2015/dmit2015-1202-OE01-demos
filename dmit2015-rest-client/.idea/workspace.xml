@@ -10,24 +10,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cc43dbe2-5fb7-4dda-b42a-cb46d942ee8f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/dmit2015/client/TodoItemService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/dmit2015/config/ApplicationConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/dmit2015/view/TodoItemCreateController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/dmit2015/view/TodoItemEditController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/dmit2015/view/TodoItemListController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsf-templates/bootsfaces-template.xhtml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsf-templates/layout.xhtml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/index.xhtml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/todoitems/create.xhtml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/todoitems/delete.xhtml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/todoitems/details.xhtml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/todoitems/detailsContent.xhtml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/todoitems/edit.xhtml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/todoitems/index.xhtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/nhl/Conference.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/nhl/Division.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/nhl/DivisionListController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/nhl/DivisionResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/nhl/Franchise.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/nhl/NhlApiService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/nhl/Team.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/nhl/TeamListController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/nhl/TeamResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/nhl/TimeZone.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/nhl/Venue.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/nhl/divisions/index.xhtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/nhl/teams/index.xhtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/microprofile-config.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/microprofile-config.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsf-templates/layout.xhtml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsf-templates/layout.xhtml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,16 +36,25 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="Class" />
-        <option value="DMIT2015 JSF CRUD List Controller" />
         <option value="DMIT2015 JSF CRUD Create Controller" />
         <option value="DMIT2015 JSF CRUD Edit Controller" />
         <option value="DMIT2015 JSF Composition Page" />
+        <option value="Class" />
+        <option value="DMIT2015 JSF CRUD List Controller" />
+        <option value="DMIT2015 JSF CRUD List Page" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="ProjectId" id="1p2skKSyhqVzvLnMZTAzXl8CSJP" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -64,7 +71,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/webapp/WEB-INF" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java/com/nhl" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -78,6 +85,8 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/java/com/nhl" />
+      <recent name="$PROJECT_DIR$/src/main/java" />
       <recent name="$PROJECT_DIR$/src/main/webapp/WEB-INF" />
       <recent name="$PROJECT_DIR$/src/main/webapp" />
     </key>
@@ -207,7 +216,7 @@
       <workItem from="1614822978904" duration="1020000" />
       <workItem from="1614895746911" duration="19000" />
       <workItem from="1615349178088" duration="1966000" />
-      <workItem from="1615428098602" duration="2413000" />
+      <workItem from="1615428098602" duration="3777000" />
     </task>
     <servers />
   </component>

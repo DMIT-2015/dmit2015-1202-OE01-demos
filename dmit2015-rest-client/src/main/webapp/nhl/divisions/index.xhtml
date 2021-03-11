@@ -1,0 +1,50 @@
+<ui:composition
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+        xmlns:h="http://xmlns.jcp.org/jsf/html"
+        xmlns:f="http://xmlns.jcp.org/jsf/core"
+        xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+        xmlns:fn="http://xmlns.jcp.org/jsp/jstl/functions"
+        xmlns:jsf="http://xmlns.jcp.org/jsf"
+        xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+        xmlns:o="http://omnifaces.org/ui"
+        xmlns:of="http://omnifaces.org/functions"
+        xmlns:p="http://primefaces.org/ui"
+        xmlns:b="http://bootsfaces.net/ui"
+        template="/WEB-INF/jsf-templates/layout.xhtml">
+
+    <ui:param name="title" value="Division - List"/>
+
+    <ui:define name="maincontent">
+
+        <b:jumbotron>
+            <h1>Division List</h1>
+        </b:jumbotron>
+
+        <p:messages id="messages"/>
+
+        <b:form>
+
+            <p:dataTable id="entityTable"
+                         value="#{currentDivisionListController.divisionList}"
+                         var="currentItem">
+
+               <p:column headerText="ID">
+                   <h:outputText value="#{currentItem.id}" />
+               </p:column>
+
+                <p:column headerText="Name">
+                    <h:outputText value="#{currentItem.name}" />
+                </p:column>
+
+                <p:column headerText="Link">
+                    <a href="https://statsapi.web.nhl.com/api/v1#{currentItem.link}">Teams</a>
+                </p:column>
+
+            </p:dataTable>
+
+        </b:form>
+
+    </ui:define>
+
+</ui:composition>
