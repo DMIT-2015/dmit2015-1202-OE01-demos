@@ -10,22 +10,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cc43dbe2-5fb7-4dda-b42a-cb46d942ee8f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nhl/Conference.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nhl/Division.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nhl/DivisionListController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nhl/DivisionResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nhl/Franchise.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nhl/NhlApiService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nhl/Team.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nhl/TeamListController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nhl/TeamResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nhl/TimeZone.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nhl/Venue.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/nhl/divisions/index.xhtml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/nhl/teams/index.xhtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/microprofile-config.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/microprofile-config.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsf-templates/layout.xhtml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsf-templates/layout.xhtml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,17 +86,6 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -216,7 +190,9 @@
       <workItem from="1614822978904" duration="1020000" />
       <workItem from="1614895746911" duration="19000" />
       <workItem from="1615349178088" duration="1966000" />
-      <workItem from="1615428098602" duration="3777000" />
+      <workItem from="1615428098602" duration="4645000" />
+      <workItem from="1615863745997" duration="233000" />
+      <workItem from="1616029209412" duration="605000" />
     </task>
     <servers />
   </component>
